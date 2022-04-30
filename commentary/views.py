@@ -1,20 +1,30 @@
+from weakref import proxy
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import fetching as ft
+
+
+
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    ft.act=False
+    ft.clearAl()
+    ft.que=[]
+    return render(request, 'index.html')
+
+
 def create(request):
     if request.method=="POST": 
         link=request.POST['link']
         ft.act=True
         ft.conti(link)
-        return HttpResponse("Playing")
+        return HttpResponse("Playing....")
         
 def stop(request):
     if request.method=="POST": 
         # link=request.POST['link']
         ft.act=False
-        msg="Paused"
+    
+        msg="Paused!!!!"
         return HttpResponse(msg)
     return 

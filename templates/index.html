@@ -43,7 +43,7 @@ button {
   line-height: inherit;
   color: inherit;
   border: 0;
-  padding: 1rem;
+  padding: 0rem;
 }
 
 input {
@@ -53,6 +53,7 @@ input {
 
 .buttons {
   display: flex;
+  
 }
 
 button {
@@ -60,9 +61,8 @@ button {
   flex: 1;
   background-color: transparent;
   color: white;
-  a:hover {
-    background-color: yellow;
-  }
+  
+ 
 }
 
 
@@ -71,6 +71,23 @@ section {
   min-height: 120px;
   text-align: center;
   background-color: white;
+  
+}
+
+#stop {
+  flex:content;
+  background-color: red;
+  font-size: 25px;
+}
+
+#play {
+  flex:content;
+  background-color: greenyellow;
+  color: black;
+  font-size: 25px;
+  
+  
+
 }
 
 
@@ -97,14 +114,28 @@ section {
   </form>
   
   
-  <section id="section"><h2></h2></section>
-    
-</main>
+  <div class="contain">
+    <div class="container">
+     <div class="music-player">
+       
+
+      
+      
+      <div class="lecteur">
+       <audio class="fc-media" style="width: 100%;">
+        <source src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}" type="audio/mp3"/>
+       </audio>
+
+      </div>
+      
+     </div>
+    </div>
+   </div>
 
 <script type="text/javascript">
   $(document).on('submit','#post-form',function(e){
     e.preventDefault();
-    $('h2').html("Playing")
+    $('h2').html("Playing........")
 
     $.ajax({
       type:'POST',
